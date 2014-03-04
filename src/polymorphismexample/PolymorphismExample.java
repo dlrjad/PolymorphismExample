@@ -9,15 +9,25 @@ public class PolymorphismExample {
     private static Boss boss = new Boss();
     private static Contractor contractor = new Contractor();
     private static Employee employee = new Employee();
+    
     public static void main(String[] args) {
+        
         Check check = new Check();
         
-        boss.getDepartament();
         check.viewEmployee(boss);
-        
-        contractor.getDepartament();
         check.viewEmployee(contractor);
-
         check.viewEmployee(employee);
+        
+        employee = boss;
+        check.viewEmployee(employee);
+
+        employee = new Boss();
+        boss = (Boss)employee;
+        check.viewEmployee(boss);
+        check.viewEmployee(employee);
+        
+        employee = new Contractor();
+        check.viewEmployee(contractor);
+        
     }
 }
